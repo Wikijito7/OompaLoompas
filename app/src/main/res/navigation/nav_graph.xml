@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/oompaLoompasListFragment">
+
+    <fragment
+        android:id="@+id/oompaLoompasListFragment"
+        android:name="es.wokis.oompaloompas.ui.oompa.OompaLoompasListFragment"
+        android:label="OompaLoompasListFragment">
+
+        <action
+            android:id="@+id/action__list__navigate_to__detail"
+            app:destination="@id/oompaDetailDialogFragment"/>
+    </fragment>
+
+    <dialog
+        android:id="@+id/oompaDetailDialogFragment"
+        android:name="es.wokis.oompaloompas.ui.detail.OompaDetailDialogFragment"
+        android:label="OompaDetailDialogFragment">
+
+        <argument
+            android:name="oompaId"
+            app:argType="int" />
+    </dialog>
+</navigation>

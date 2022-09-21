@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/compiler.xml
+/.idea/discord.xml
+/.idea/gradle.xml
+/gradle/wrapper/gradle-wrapper.jar
+/gradlew
+/gradlew.bat
+/.idea/misc.xml
+/.idea/vcs.xml
