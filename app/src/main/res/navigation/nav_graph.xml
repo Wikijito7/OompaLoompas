@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/oompaLoompasListFragment"
-        android:name="es.wokis.oompaloompas.ui.oompa.OompaLoompasListFragment"
+        android:name="es.wokis.oompaloompas.ui.oompa.fragment.OompaLoompasListFragment"
         android:label="OompaLoompasListFragment">
 
         <action
