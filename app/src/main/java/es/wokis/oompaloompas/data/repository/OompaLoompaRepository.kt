@@ -6,15 +6,15 @@ import es.wokis.oompaloompas.data.error.RepositoryErrorManager
 import es.wokis.oompaloompas.data.response.AsyncResult
 
 interface OompaLoompaRepository {
-    suspend fun getOompaLoompas(): AsyncResult<List<OompaLoompaBO>>
+    suspend fun getOompaLoompas(page: Int): AsyncResult<List<OompaLoompaBO>>
     suspend fun getOompaLoompaById(id: Long): AsyncResult<OompaLoompaBO>
 }
 
 class OompaLoompaRepositoryImpl(private val remoteDataSource: OompaLoompaRemoteDataSource) :
     OompaLoompaRepository {
-    override suspend fun getOompaLoompas(): AsyncResult<List<OompaLoompaBO>> =
+    override suspend fun getOompaLoompas(page: Int): AsyncResult<List<OompaLoompaBO>> =
         RepositoryErrorManager.wrap {
-            remoteDataSource.getOompaLoompas()
+            remoteDataSource.getOompaLoompas(page)
         }
 
     override suspend fun getOompaLoompaById(id: Long): AsyncResult<OompaLoompaBO> = RepositoryErrorManager.wrap {

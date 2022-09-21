@@ -7,11 +7,17 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.*
+import java.util.concurrent.CancellationException
 
 object RepositoryErrorManager {
     suspend fun <T> wrap(block: suspend () -> T): AsyncResult<T> {
         return try {
             AsyncResult.Success(block())
+
+        } catch (exc: CancellationException) {
+            // If is a CancellationException, we throw it as it's necessary for the framework
+            // in order to remove the coroutine.
+            throw exc
 
         } catch (exc: Exception) {
             manageError(exc)

@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RemoteModule {
-    @Singleton
     @Provides
-    fun provideOompaLoompasRemoteDataSource(service: OompaLoompaService): OompaLoompaRemoteDataSource = OompaLoompaRemoteDataSourceImpl(service)
+    fun provideOompaLoompasRemoteDataSource(service: OompaLoompaService): OompaLoompaRemoteDataSource =
+        OompaLoompaRemoteDataSourceImpl(service)
 }

@@ -5,9 +5,11 @@ import es.wokis.oompaloompas.data.repository.OompaLoompaRepository
 import es.wokis.oompaloompas.data.response.AsyncResult
 
 interface GetOompaLoompasUseCase {
-    suspend operator fun invoke(): AsyncResult<List<OompaLoompaBO>>
+    suspend operator fun invoke(page: Int): AsyncResult<List<OompaLoompaBO>>
 }
 
-class GetOompaLoompasUseCaseImpl(private val repository: OompaLoompaRepository) : GetOompaLoompasUseCase {
-    override suspend fun invoke(): AsyncResult<List<OompaLoompaBO>> = repository.getOompaLoompas()
+class GetOompaLoompasUseCaseImpl(private val repository: OompaLoompaRepository) :
+    GetOompaLoompasUseCase {
+    override suspend fun invoke(page: Int): AsyncResult<List<OompaLoompaBO>> =
+        repository.getOompaLoompas(page)
 }
