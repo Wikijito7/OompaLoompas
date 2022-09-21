@@ -8,17 +8,25 @@ import es.wokis.oompaloompas.data.response.AsyncResult
 interface OompaLoompaRepository {
     suspend fun getOompaLoompas(page: Int): AsyncResult<List<OompaLoompaBO>>
     suspend fun getOompaLoompaById(id: Long): AsyncResult<OompaLoompaBO>
+    fun getMaxPage(): Int
 }
 
 class OompaLoompaRepositoryImpl(private val remoteDataSource: OompaLoompaRemoteDataSource) :
     OompaLoompaRepository {
+
+    private var maxPage = 0
+
     override suspend fun getOompaLoompas(page: Int): AsyncResult<List<OompaLoompaBO>> =
         RepositoryErrorManager.wrap {
-            remoteDataSource.getOompaLoompas(page)
+            val oompaLoompasResponse = remoteDataSource.getOompaLoompas(page)
+            maxPage = oompaLoompasResponse.total
+            oompaLoompasResponse.results
         }
 
     override suspend fun getOompaLoompaById(id: Long): AsyncResult<OompaLoompaBO> = RepositoryErrorManager.wrap {
         remoteDataSource.getOompaLoompaById(id)
     }
+
+    override fun getMaxPage(): Int = maxPage
 
 }
