@@ -7,8 +7,11 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import es.wokis.oompaloompas.data.bo.OompaLoompaBO
 import es.wokis.oompaloompas.data.response.AsyncResult
+import es.wokis.oompaloompas.data.response.map
 import es.wokis.oompaloompas.domain.GetMaxPageUseCase
 import es.wokis.oompaloompas.domain.GetOompaLoompasUseCase
+import es.wokis.oompaloompas.ui.oompa.mapper.toVO
+import es.wokis.oompaloompas.ui.oompa.vo.OompaLoompaVO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,7 +22,7 @@ class OompaLoompasListViewModel @Inject constructor(
     private val getMaxPageUseCase: GetMaxPageUseCase
 ) : ViewModel() {
     // region private live data
-    private var oompaLoompasLiveData: MutableLiveData<AsyncResult<List<OompaLoompaBO>>> =
+    private var oompaLoompasLiveData: MutableLiveData<AsyncResult<List<OompaLoompaVO>>> =
         MutableLiveData()
     private var maxPageLiveData: MutableLiveData<Int> = MutableLiveData()
     // endregion
@@ -28,14 +31,14 @@ class OompaLoompasListViewModel @Inject constructor(
 
     // region public live data
     fun getOompaLoompasLiveData() =
-        oompaLoompasLiveData as LiveData<AsyncResult<List<OompaLoompaBO>>>
+        oompaLoompasLiveData as LiveData<AsyncResult<List<OompaLoompaVO>>>
 
     fun getMaxPageLiveData() = maxPageLiveData as LiveData<Int>
     // endregion
 
     fun getOompaLoompas() {
         viewModelScope.launch(Dispatchers.IO) {
-            val oompaLoompas = getOompaLoompasUseCase(page)
+            val oompaLoompas = getOompaLoompasUseCase(page).map { it.toVO() }
             oompaLoompasLiveData.postValue(oompaLoompas)
         }
     }

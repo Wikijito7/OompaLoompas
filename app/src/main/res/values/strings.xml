@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">OompaLoompas</string>
+    <string name="main_menu__filter">Filter</string>
+    <string name="error_dialog__title">Error</string>
+    <string name="error_dialog__accept">Accept</string>
+    <string name="error_dialog__retry">Retry</string>
 </resources>

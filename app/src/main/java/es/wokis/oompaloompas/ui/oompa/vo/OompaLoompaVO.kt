@@ -1,7 +1,7 @@
 package es.wokis.oompaloompas.ui.oompa.vo
 
 data class OompaLoompaVO(
-    val id: Long,
+    val id: Long?,
     val firstName: String,
     val lastName: String,
     val email: String,

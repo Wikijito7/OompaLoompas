@@ -11,3 +11,5 @@ fun OompaLoompaBO.toVO() = OompaLoompaVO(
     age = age,
     profession = profession
 )
+
+fun List<OompaLoompaBO>.toVO() = this.map { it.toVO() }
