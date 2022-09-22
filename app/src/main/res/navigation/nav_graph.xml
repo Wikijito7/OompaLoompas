@@ -28,7 +28,7 @@
 
         <argument
             android:name="oompaId"
-            app:argType="integer" />
+            app:argType="long" />
 
     </dialog>
 

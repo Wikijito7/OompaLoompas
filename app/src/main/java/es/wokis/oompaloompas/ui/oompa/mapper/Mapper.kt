@@ -7,6 +7,7 @@ fun OompaLoompaBO.toVO() = OompaLoompaVO(
     id = id,
     firstName = firstName,
     lastName = lastName,
+    image = image,
     email = email,
     age = age,
     profession = profession

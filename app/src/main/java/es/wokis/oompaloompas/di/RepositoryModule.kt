@@ -13,6 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {
     @Provides
+    @Singleton
     fun provideOompaLoompasRepository(remoteDataSource: OompaLoompaRemoteDataSource): OompaLoompaRepository =
         OompaLoompaRepositoryImpl(remoteDataSource)
 }

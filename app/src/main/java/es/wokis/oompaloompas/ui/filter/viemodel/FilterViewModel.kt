@@ -1,4 +1,6 @@
 package es.wokis.oompaloompas.ui.filter.viemodel
 
-class FilterViewModel {
+import androidx.lifecycle.ViewModel
+
+class FilterViewModel : ViewModel() {
 }

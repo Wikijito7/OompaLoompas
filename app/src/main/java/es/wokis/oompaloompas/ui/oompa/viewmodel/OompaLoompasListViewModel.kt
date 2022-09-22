@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import es.wokis.oompaloompas.data.bo.OompaLoompaBO
 import es.wokis.oompaloompas.data.response.AsyncResult
 import es.wokis.oompaloompas.data.response.map
 import es.wokis.oompaloompas.domain.GetMaxPageUseCase
@@ -25,6 +24,7 @@ class OompaLoompasListViewModel @Inject constructor(
     private var oompaLoompasLiveData: MutableLiveData<AsyncResult<List<OompaLoompaVO>>> =
         MutableLiveData()
     private var maxPageLiveData: MutableLiveData<Int> = MutableLiveData()
+
     // endregion
     private var page: Int = 1
     private var maxPage: Int = 1
@@ -38,20 +38,25 @@ class OompaLoompasListViewModel @Inject constructor(
 
     fun getOompaLoompas() {
         viewModelScope.launch(Dispatchers.IO) {
-            val oompaLoompas = getOompaLoompasUseCase(page).map { it.toVO() }
-            oompaLoompasLiveData.postValue(oompaLoompas)
+            getOompaLoompasUseCase(page).collect { asyncResult ->
+                oompaLoompasLiveData.postValue(asyncResult.map {
+                    it.toVO()
+                })
+            }
         }
     }
 
     fun nextPage() {
         if (page < maxPage) {
             page++
+            getOompaLoompas()
         }
     }
 
     fun previousPage() {
         if (page > 1) {
             page--
+            getOompaLoompas()
         }
     }
 

@@ -4,4 +4,15 @@
     <string name="error_dialog__title">Error</string>
     <string name="error_dialog__accept">Accept</string>
     <string name="error_dialog__retry">Retry</string>
+    <string name="oompa_loompas__previous">Previous</string>
+    <string name="oompa_loompas__next">Next</string>
+    <string name="oompa_loompa__previous_desc">Previous page</string>
+    <string name="oompa_loompas__next_desc">Next page</string>
+    <string name="oompa_loompas__no_oompas_found">There are not Oompa Loompas available. We\'re sorry :(</string>
+    <string name="row_oompa__oompas_image_desc">Oompa\'s image</string>
+    <string name="row_oompa__full_name">%1$s %2$s</string>
+    <string name="row_oompa__age">%1$d years</string>
+    <string name="row_oompa__email">Email: %1$s</string>
+    <string name="oompa_loompas__page_indicator">%1$d / %2$d</string>
+    <string name="oompa_loompas__loading_oompas">Obtaining Oompa Loompa Info…</string>
 </resources>

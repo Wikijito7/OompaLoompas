@@ -2,6 +2,8 @@ package es.wokis.oompaloompas.data.error
 
 import es.wokis.oompaloompas.data.response.AsyncResult
 import es.wokis.oompaloompas.data.response.ErrorType
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -10,9 +12,10 @@ import java.util.*
 import java.util.concurrent.CancellationException
 
 object RepositoryErrorManager {
-    suspend fun <T> wrap(block: suspend () -> T): AsyncResult<T> {
-        return try {
-            AsyncResult.Success(block())
+    suspend fun <T> wrap(block: suspend () -> T): Flow<AsyncResult<T>> = flow {
+        emit(AsyncResult.Loading())
+        try {
+            emit(AsyncResult.Success(block()))
 
         } catch (exc: CancellationException) {
             // If is a CancellationException, we throw it as it's necessary for the framework
@@ -20,7 +23,7 @@ object RepositoryErrorManager {
             throw exc
 
         } catch (exc: Exception) {
-            manageError(exc)
+            emit(manageError(exc))
         }
     }
 

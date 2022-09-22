@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import dagger.hilt.android.AndroidEntryPoint
 import es.wokis.oompaloompas.R
+import es.wokis.oompaloompas.databinding.ActivityMainBinding
+import es.wokis.oompaloompas.utils.setVisible
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -15,9 +17,12 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
+    private var binding: ActivityMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -32,7 +37,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
+    }
+
     fun setOnClickMenuListener(onClickMenu: () -> Boolean) {
         executeMenuClick = onClickMenu
+    }
+
+    fun setLoading(loading: Boolean, loadingText: String) {
+        binding?.mainContainerLoading?.loadingContainerMain.setVisible(loading)
+        binding?.mainContainerLoading?.loadingLabelLoadingText?.text = loadingText
     }
 }
