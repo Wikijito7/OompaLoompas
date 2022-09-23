@@ -14,7 +14,9 @@ import es.wokis.oompaloompas.databinding.FragmentOompaLoompasListBinding
 import es.wokis.oompaloompas.ui.base.fragment.BaseFragment
 import es.wokis.oompaloompas.ui.oompa.adapter.OompaLoompaListAdapter
 import es.wokis.oompaloompas.ui.oompa.viewmodel.OompaLoompasListViewModel
+import es.wokis.oompaloompas.utils.hide
 import es.wokis.oompaloompas.utils.setVisible
+import es.wokis.oompaloompas.utils.show
 
 @AndroidEntryPoint
 class OompaLoompasListFragment : BaseFragment() {
@@ -86,23 +88,35 @@ class OompaLoompasListFragment : BaseFragment() {
 
     private fun setUpOompaLoompasListObserver() {
         viewModel.getOompaLoompasLiveData().observe(viewLifecycleOwner) {
-            setLoading(false)
             when (it) {
                 is AsyncResult.Error -> {
-                    showErrorDialog(
-                        when (it.error) {
-                            is ErrorType.DataParseError -> TODO()
-                            is ErrorType.NoConnectionError -> TODO()
-                            is ErrorType.ServerError -> TODO()
-                            is ErrorType.UnknownError -> TODO()
-                        }
+                    setLoading(false)
+                    showOompaLoompasErrorDialog(
+                        getString(
+                            when (it.error) {
+                                is ErrorType.DataParseError -> R.string.error__data_parse
+                                is ErrorType.NoConnectionError -> R.string.error__no_connection
+                                is ErrorType.ServerError -> R.string.error__server
+                                is ErrorType.UnknownError -> R.string.error__unknown
+                            }
+                        )
                     )
+                    binding?.apply {
+                        oompaLoompasContainerMainScroll.hide()
+                        oompaLoompasLabelNoOompasFound.show()
+                        oompaLoompasBtnRetry.show()
+                    }
                 }
 
                 is AsyncResult.Success -> {
+                    setLoading(false)
                     it.data?.let { oompasList ->
-                        binding?.oompaLoompasContainerMainScroll.setVisible(oompasList.isNotEmpty())
-                        binding?.oompaLoompasLabelNoOompasFound.setVisible(oompasList.isEmpty())
+                        binding?.apply {
+                            oompaLoompasContainerMainScroll.setVisible(oompasList.isNotEmpty())
+                            oompaLoompasLabelNoOompasFound.setVisible(oompasList.isEmpty())
+                            oompaLoompasBtnRetry.setVisible(oompasList.isEmpty())
+                        }
+
                         if (oompasList.isNotEmpty()) {
                             adapter?.submitList(oompasList)
                             viewModel.getMaxPage()
@@ -118,7 +132,7 @@ class OompaLoompasListFragment : BaseFragment() {
         }
     }
 
-    private fun showErrorDialog(errorMessage: String) {
+    private fun showOompaLoompasErrorDialog(errorMessage: String) {
         val dialog = AlertDialog.Builder(context)
         dialog.setTitle(R.string.error_dialog__title)
         dialog.setMessage(errorMessage)
@@ -126,8 +140,10 @@ class OompaLoompasListFragment : BaseFragment() {
             dialogInterface.dismiss()
         }
         dialog.setNegativeButton(R.string.error_dialog__retry) { dialogInterface, _ ->
+            viewModel.getOompaLoompas()
             dialogInterface.dismiss()
         }
+        dialog.show()
     }
 
     private fun setUpClickListener() {
@@ -140,6 +156,10 @@ class OompaLoompasListFragment : BaseFragment() {
             oompaLoompasBtnPrevious.setOnClickListener {
                 viewModel.previousPage()
                 scrollToTop()
+            }
+
+            oompaLoompasBtnRetry.setOnClickListener {
+                viewModel.getOompaLoompas()
             }
         }
     }

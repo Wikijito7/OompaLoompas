@@ -9,66 +9,92 @@
         android:id="@+id/row_oompa__image__oompa_image"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
         android:contentDescription="@string/row_oompa__oompas_image_desc"
+        android:scaleType="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_launcher_background" />
 
     <TextView
-        style="@style/Text.Bold.Body1"
         android:id="@+id/row_oompa__label__full_name"
+        style="@style/Text.Bold.Body1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Antonio Lojo" />
 
     <TextView
-        style="@style/Text.Regular.Body1"
         android:id="@+id/row_oompa__label__profession"
-        android:layout_width="0dp"
+        style="@style/Text.Regular.Body1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="4dp"
-        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__full_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@id/row_oompa__separator__profession_gender"
         app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__full_name"
         tools:text="Developer" />
 
+    <View
+        android:id="@+id/row_oompa__separator__profession_gender"
+        style="@style/Divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/row_oompa__label__profession"
+        app:layout_constraintEnd_toStartOf="@id/row_oompa__label__gender"
+        app:layout_constraintStart_toEndOf="@id/row_oompa__label__profession"
+        app:layout_constraintTop_toTopOf="@id/row_oompa__label__profession" />
+
     <TextView
+        android:id="@+id/row_oompa__label__gender"
         style="@style/Text.Regular.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/row_oompa__separator__profession_gender"
+        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__full_name"
+        tools:text="Male" />
+
+    <TextView
         android:id="@+id/row_oompa__label__email"
+        style="@style/Text.Regular.Body1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="4dp"
-        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__profession"
-        app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
+        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__profession"
         tools:text="Email: antonio.lojo@napptilus.com" />
 
     <TextView
-        style="@style/Text.Regular.Body1"
         android:id="@+id/row_oompa__label__age"
+        style="@style/Text.Regular.Body1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="4dp"
-        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__email"
-        app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/row_oompa__image__oompa_image"
+        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__email"
         tools:text="24 years" />
 
     <View
+        style="@style/Divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_margin="16dp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__age"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/row_oompa__label__age" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,8 @@ fun OompaLoompaBO.toVO() = OompaLoompaVO(
     image = image,
     email = email,
     age = age,
-    profession = profession
+    profession = profession,
+    gender = gender
 )
 
 fun List<OompaLoompaBO>.toVO() = this.map { it.toVO() }

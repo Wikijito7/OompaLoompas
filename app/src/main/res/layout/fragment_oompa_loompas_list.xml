@@ -7,14 +7,31 @@
 
     <TextView
         android:id="@+id/oompa_loompas__label__no_oompas_found"
+        style="@style/Text.Bold.Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
         android:text="@string/oompa_loompas__no_oompas_found"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/oompa_loompas__btn__retry"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/error_dialog__retry"
+        android:visibility="gone"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oompa_loompas__label__no_oompas_found" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/oompa_loompas__container__main_scroll"
@@ -44,6 +61,7 @@
 
             <ImageButton
                 android:id="@+id/oompa_loompas__btn__previous"
+                style="@style/Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -55,8 +73,8 @@
                 app:layout_constraintTop_toBottomOf="@id/oompa_loompas__list__oompas" />
 
             <TextView
-                style="@style/Text.Bold.Body2"
                 android:id="@+id/oompa_loompas__label__page_indicator"
+                style="@style/Text.Bold.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -69,6 +87,7 @@
 
             <ImageButton
                 android:id="@+id/oompa_loompas__btn__next"
+                style="@style/Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"

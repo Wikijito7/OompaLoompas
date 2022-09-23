@@ -7,5 +7,6 @@ data class OompaLoompaVO(
     val image: String,
     val email: String,
     val age: Int,
-    val profession: String
+    val profession: String,
+    val gender: String
 )

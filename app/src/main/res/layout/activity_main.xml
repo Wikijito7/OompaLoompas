@@ -20,6 +20,6 @@
 
     <include
         android:id="@+id/main__container__loading"
-        layout="@layout/loading_view"/>
+        layout="@layout/loading_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

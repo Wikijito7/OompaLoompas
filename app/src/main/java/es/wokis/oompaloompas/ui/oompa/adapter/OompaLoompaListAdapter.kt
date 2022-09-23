@@ -62,9 +62,17 @@ class OompaLoompaListAdapter :
                     oompaLoompa.lastName
                 )
                 rowOompaLabelProfession.text = oompaLoompa.profession
-                rowOompaLabelEmail.text =
-                    context.getString(R.string.row_oompa__email, oompaLoompa.email)
+                rowOompaLabelEmail.text = oompaLoompa.email
                 rowOompaLabelAge.text = context.getString(R.string.row_oompa__age, oompaLoompa.age)
+                rowOompaLabelGender.text =
+                    context.getString(
+                        if (oompaLoompa.gender == "M") {
+                            R.string.row_oompa__male
+
+                        } else {
+                            R.string.row_oompa__female
+                        }
+                    )
             }
         }
 

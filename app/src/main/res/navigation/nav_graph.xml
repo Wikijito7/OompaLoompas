@@ -23,7 +23,7 @@
 
     <dialog
         android:id="@+id/oompaDetailDialogFragment"
-        android:name="es.wokis.oompaloompas.ui.detail.OompaDetailDialogFragment"
+        android:name="es.wokis.oompaloompas.ui.detail.fragment.OompaDetailDialogFragment"
         android:label="OompaDetailDialogFragment">
 
         <argument

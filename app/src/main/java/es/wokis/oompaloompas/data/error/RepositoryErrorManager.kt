@@ -28,12 +28,15 @@ object RepositoryErrorManager {
     }
 
     private fun <T> manageError(exc: Exception): AsyncResult.Error<T> = AsyncResult.Error(
-        when (exc.cause) {
-            is IOException -> ErrorType.ServerError("Server error")
+        when (exc) {
             is SocketTimeoutException, is UnknownHostException, is ConnectException -> ErrorType.NoConnectionError(
                 "No connection available"
             )
+
+            is IOException -> ErrorType.ServerError("Server error")
+
             is IllegalFormatException -> ErrorType.DataParseError("Error parsing data")
+
             else -> ErrorType.UnknownError("Unknown error")
         }
     )
