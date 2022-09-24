@@ -22,4 +22,16 @@ class DomainModule {
     @Provides
     fun provideGetMaxPageUseCase(repository: OompaLoompaRepository): GetMaxPageUseCase =
         GetMaxPageUseCaseImpl(repository)
+
+    @Provides
+    fun provideGetProfessionsUseCase(repository: OompaLoompaRepository): GetProfessionsUseCase =
+        GetProfessionsUseCaseImpl(repository)
+
+    @Provides
+    fun provideGetSavedFiltersUseCase(repository: OompaLoompaRepository): GetSavedFiltersUseCase =
+        GetSavedFiltersUseCaseImpl(repository)
+
+    @Provides
+    fun provideSaveFiltersUseCase(repository: OompaLoompaRepository): SaveFiltersUseCase =
+        SaveFiltersUseCaseImpl(repository)
 }

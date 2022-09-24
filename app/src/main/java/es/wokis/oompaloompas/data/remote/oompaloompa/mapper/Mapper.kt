@@ -1,11 +1,11 @@
-package es.wokis.oompaloompas.remote.oompaloompa.mapper
+package es.wokis.oompaloompas.data.remote.oompaloompa.mapper
 
 import es.wokis.oompaloompas.data.bo.OompaLoompaBO
 import es.wokis.oompaloompas.data.bo.OompaLoompaFavoritesBO
 import es.wokis.oompaloompas.data.bo.OompaLoompaResponseBO
-import es.wokis.oompaloompas.remote.oompaloompa.dto.OompaLoompaDTO
-import es.wokis.oompaloompas.remote.oompaloompa.dto.OompaLoompaFavoritesDTO
-import es.wokis.oompaloompas.remote.oompaloompa.dto.OompaLoompaResponseDTO
+import es.wokis.oompaloompas.data.remote.oompaloompa.dto.OompaLoompaDTO
+import es.wokis.oompaloompas.data.remote.oompaloompa.dto.OompaLoompaFavoritesDTO
+import es.wokis.oompaloompas.data.remote.oompaloompa.dto.OompaLoompaResponseDTO
 import es.wokis.oompaloompas.utils.orZero
 
 fun OompaLoompaDTO.toBO() = OompaLoompaBO(

@@ -9,6 +9,7 @@ import es.wokis.oompaloompas.data.response.AsyncResult
 import es.wokis.oompaloompas.data.response.map
 import es.wokis.oompaloompas.domain.GetMaxPageUseCase
 import es.wokis.oompaloompas.domain.GetOompaLoompasUseCase
+import es.wokis.oompaloompas.domain.GetSavedFiltersUseCase
 import es.wokis.oompaloompas.ui.oompa.mapper.toVO
 import es.wokis.oompaloompas.ui.oompa.vo.OompaLoompaVO
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class OompaLoompasListViewModel @Inject constructor(
     private val getOompaLoompasUseCase: GetOompaLoompasUseCase,
+    private val getSavedFiltersUseCase: GetSavedFiltersUseCase,
     private val getMaxPageUseCase: GetMaxPageUseCase
 ) : ViewModel() {
     // region private live data
@@ -66,5 +68,9 @@ class OompaLoompasListViewModel @Inject constructor(
         val maxPage = getMaxPageUseCase()
         this.maxPage = maxPage
         maxPageLiveData.postValue(maxPage)
+    }
+
+    fun applyFilters() {
+        TODO("Not yet implemented")
     }
 }

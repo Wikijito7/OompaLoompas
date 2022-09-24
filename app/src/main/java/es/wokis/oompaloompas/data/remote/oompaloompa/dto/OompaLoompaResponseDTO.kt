@@ -1,4 +1,4 @@
-package es.wokis.oompaloompas.remote.oompaloompa.dto
+package es.wokis.oompaloompas.data.remote.oompaloompa.dto
 
 import com.google.gson.annotations.SerializedName
 

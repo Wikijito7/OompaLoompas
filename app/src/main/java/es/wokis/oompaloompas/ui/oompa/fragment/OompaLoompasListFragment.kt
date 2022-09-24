@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import es.wokis.oompaloompas.R
+import es.wokis.oompaloompas.data.constants.ResultCodes
 import es.wokis.oompaloompas.data.response.AsyncResult
 import es.wokis.oompaloompas.data.response.ErrorType
 import es.wokis.oompaloompas.databinding.FragmentOompaLoompasListBinding
@@ -40,7 +42,14 @@ class OompaLoompasListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpObservers()
+        setUpFragmentResultListener()
         viewModel.getOompaLoompas()
+    }
+
+    private fun setUpFragmentResultListener() {
+        setFragmentResultListener(ResultCodes.LIST_TO_FILTER) { _, _ ->
+            viewModel.applyFilters()
+        }
     }
 
     override fun onDestroy() {

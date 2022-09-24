@@ -19,16 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
         android:id="@+id/oompa_loompas__btn__retry"
-        style="@style/Button"
+        style="@style/Text.Bold.Body2.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/error_dialog__retry"
         android:visibility="gone"
-        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/oompa_loompas__label__no_oompas_found" />

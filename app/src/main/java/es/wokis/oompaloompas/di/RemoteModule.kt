@@ -5,9 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import es.wokis.oompaloompas.data.datasource.OompaLoompaRemoteDataSource
-import es.wokis.oompaloompas.remote.oompaloompa.OompaLoompaRemoteDataSourceImpl
-import es.wokis.oompaloompas.remote.oompaloompa.service.OompaLoompaService
-import javax.inject.Singleton
+import es.wokis.oompaloompas.data.remote.oompaloompa.OompaLoompaRemoteDataSourceImpl
+import es.wokis.oompaloompas.data.remote.oompaloompa.service.OompaLoompaService
 
 @Module
 @InstallIn(SingletonComponent::class)
