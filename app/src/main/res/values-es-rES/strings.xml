@@ -32,4 +32,12 @@
     <string name="oompa_detail__quota">Cuota</string>
     <string name="oompa_detail__color_title">Color</string>
     <string name="error__oompa_detail">Ha habido un error cargando la información del Oompa. Inténtalo de nuevo más tarde.</string>
+    <string name="filter__profession_title">Profesión</string>
+    <string name="filter__gender_title">Género</string>
+    <string name="filter__main_title">Filtrar los resultados</string>
+    <string name="filter__accept">Aceptar</string>
+    <string name="filter__apply_filters">Aplicar filtros</string>
+    <string name="oompa_loompas__filters_applied">Hay filtros aplicados</string>
+    <string name="oompa_loompas__remove_filters">Eliminar filtros</string>
+    <string name="row_filter__nothing_selected">Sin filtrar</string>
 </resources>

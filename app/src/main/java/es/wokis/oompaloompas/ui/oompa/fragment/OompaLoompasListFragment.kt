@@ -16,6 +16,7 @@ import es.wokis.oompaloompas.databinding.FragmentOompaLoompasListBinding
 import es.wokis.oompaloompas.ui.base.fragment.BaseFragment
 import es.wokis.oompaloompas.ui.oompa.adapter.OompaLoompaListAdapter
 import es.wokis.oompaloompas.ui.oompa.viewmodel.OompaLoompasListViewModel
+import es.wokis.oompaloompas.ui.oompa.vo.OompaLoompaVO
 import es.wokis.oompaloompas.utils.hide
 import es.wokis.oompaloompas.utils.setVisible
 import es.wokis.oompaloompas.utils.show
@@ -121,9 +122,7 @@ class OompaLoompasListFragment : BaseFragment() {
                     setLoading(false)
                     it.data?.let { oompasList ->
                         binding?.apply {
-                            oompaLoompasContainerMainScroll.setVisible(oompasList.isNotEmpty())
-                            oompaLoompasLabelNoOompasFound.setVisible(oompasList.isEmpty())
-                            oompaLoompasBtnRetry.setVisible(oompasList.isEmpty())
+                            updateViews(oompasList)
                         }
 
                         if (oompasList.isNotEmpty()) {
@@ -139,6 +138,21 @@ class OompaLoompasListFragment : BaseFragment() {
                 )
             }
         }
+    }
+
+    private fun FragmentOompaLoompasListBinding.updateViews(oompasList: List<OompaLoompaVO>) {
+        oompaLoompasContainerMainScroll.setVisible(oompasList.isNotEmpty())
+        oompaLoompasLabelNoOompasFound.setVisible(oompasList.isEmpty())
+        oompaLoompasLabelFiltersApplied.setVisible(viewModel.areThereFiltersApplied())
+        oompaLoompasBtnRetry.setVisible(oompasList.isEmpty())
+        oompaLoompasBtnRetry.text = getString(
+            if (!viewModel.areThereFiltersApplied()) {
+                R.string.error_dialog__retry
+
+            } else {
+                R.string.oompa_loompas__remove_filters
+            }
+        )
     }
 
     private fun showOompaLoompasErrorDialog(errorMessage: String) {
@@ -168,8 +182,17 @@ class OompaLoompasListFragment : BaseFragment() {
             }
 
             oompaLoompasBtnRetry.setOnClickListener {
-                viewModel.getOompaLoompas()
+                onClickRetryBtn()
             }
+        }
+    }
+
+    private fun onClickRetryBtn() {
+        if (!viewModel.areThereFiltersApplied()) {
+            viewModel.getOompaLoompas()
+
+        } else {
+            viewModel.removeFilters()
         }
     }
 

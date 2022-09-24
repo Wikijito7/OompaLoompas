@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
 
     <TextView
         android:id="@+id/oompa_loompas__label__no_oompas_found"
@@ -32,6 +33,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/oompa_loompas__label__no_oompas_found" />
 
+    <TextView
+        android:id="@+id/oompa_loompas__label__filters_applied"
+        style="@style/Text.Bold.Body2.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/oompa_loompas__filters_applied"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/oompa_loompas__container__main_scroll"
         android:layout_width="0dp"
@@ -40,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oompa_loompas__label__filters_applied"
         tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout

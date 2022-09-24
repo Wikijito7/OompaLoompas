@@ -35,6 +35,7 @@ class FilterDialogFragment : BaseBottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        expandView()
         setUpAdapter()
         setUpObservers()
     }
@@ -51,6 +52,14 @@ class FilterDialogFragment : BaseBottomSheetDialogFragment() {
 
     private fun setUpObservers() {
         observeFilters()
+        observeFiltersSaved()
+    }
+
+    private fun observeFiltersSaved() {
+        viewModel.getFiltersSavedLiveData().observe(viewLifecycleOwner) {
+            setFragmentResult(ResultCodes.LIST_TO_FILTER, bundleOf())
+            navigateBack()
+        }
     }
 
     private fun observeFilters() {
@@ -81,15 +90,9 @@ class FilterDialogFragment : BaseBottomSheetDialogFragment() {
             }
 
             filterBtnApplyFilter.setOnClickListener {
-                saveFiltersAndGoBack()
+                viewModel.saveFilters()
             }
         }
-    }
-
-    private fun saveFiltersAndGoBack() {
-        setFragmentResult(ResultCodes.LIST_TO_FILTER, bundleOf())
-        viewModel.saveFilters()
-        navigateBack()
     }
 
     private fun showOptionsButtons() {

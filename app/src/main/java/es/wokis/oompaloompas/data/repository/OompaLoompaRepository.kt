@@ -12,7 +12,7 @@ interface OompaLoompaRepository {
     fun getMaxPage(): Int
     fun getProfessions(): List<String>
     fun getSavedFilters() : Pair<String?, String?>
-    fun saveFilters(filters: Pair<String?, String?>)
+    fun saveFilters(filters: Pair<String?, String?>): Boolean
 }
 
 class OompaLoompaRepositoryImpl(private val remoteDataSource: OompaLoompaRemoteDataSource) :
@@ -42,8 +42,9 @@ class OompaLoompaRepositoryImpl(private val remoteDataSource: OompaLoompaRemoteD
 
     override fun getSavedFilters(): Pair<String?, String?> = savedFilters
 
-    override fun saveFilters(filters: Pair<String?, String?>) {
+    override fun saveFilters(filters: Pair<String?, String?>): Boolean {
         this.savedFilters = filters
+        return true
     }
 
 }

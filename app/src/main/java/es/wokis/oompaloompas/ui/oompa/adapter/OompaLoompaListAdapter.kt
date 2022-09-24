@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import es.wokis.oompaloompas.R
+import es.wokis.oompaloompas.data.constants.AppConstants.MALE
 import es.wokis.oompaloompas.databinding.RowOompaLoompaBinding
 import es.wokis.oompaloompas.ui.oompa.vo.OompaLoompaVO
 
@@ -66,7 +67,7 @@ class OompaLoompaListAdapter :
                 rowOompaLabelAge.text = context.getString(R.string.row_oompa__age, oompaLoompa.age)
                 rowOompaLabelGender.text =
                     context.getString(
-                        if (oompaLoompa.gender == "M") {
+                        if (oompaLoompa.gender == MALE) {
                             R.string.row_oompa__male
 
                         } else {

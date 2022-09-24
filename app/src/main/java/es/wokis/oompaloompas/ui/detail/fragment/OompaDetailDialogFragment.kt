@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import es.wokis.oompaloompas.R
 import es.wokis.oompaloompas.data.bo.OompaLoompaBO
 import es.wokis.oompaloompas.data.constants.AppConstants.EMPTY_TEXT
+import es.wokis.oompaloompas.data.constants.AppConstants.MALE
 import es.wokis.oompaloompas.data.response.AsyncResult
 import es.wokis.oompaloompas.databinding.DialogOompaLoompaDetailBinding
 import es.wokis.oompaloompas.ui.base.dialog.BaseBottomSheetDialogFragment
@@ -98,7 +99,7 @@ class OompaDetailDialogFragment : BaseBottomSheetDialogFragment() {
             oompaDetailLabelEmail.text = oompaInfo.email
             oompaDetailLabelProfession.text = oompaInfo.profession
             oompaDetailLabelGender.text = getString(
-                if (oompaInfo.gender == "M") {
+                if (oompaInfo.gender == MALE) {
                     R.string.row_oompa__male
 
                 } else {

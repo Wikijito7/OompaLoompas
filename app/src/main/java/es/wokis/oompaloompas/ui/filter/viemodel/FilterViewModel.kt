@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import es.wokis.oompaloompas.data.constants.AppConstants.FEMALE
+import es.wokis.oompaloompas.data.constants.AppConstants.MALE
+import es.wokis.oompaloompas.data.constants.AppConstants.NOTHING
 import es.wokis.oompaloompas.domain.GetProfessionsUseCase
 import es.wokis.oompaloompas.domain.GetSavedFiltersUseCase
 import es.wokis.oompaloompas.domain.SaveFiltersUseCase
@@ -14,12 +17,14 @@ import javax.inject.Inject
 @HiltViewModel
 class FilterViewModel @Inject constructor(
     private val getProfessionsUseCase: GetProfessionsUseCase,
-    private val getSavedFiltersUseCase: GetSavedFiltersUseCase,
-    private val saveFiltersUseCase: SaveFiltersUseCase
+    private val saveFiltersUseCase: SaveFiltersUseCase,
+    getSavedFiltersUseCase: GetSavedFiltersUseCase
 ) : ViewModel() {
 
     private var filtersLiveData: MutableLiveData<List<FilterVO>> =
         MutableLiveData()
+
+    private var filtersSavedLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     private var selectedProfession: FilterVO? = null
     private var selectedGender: FilterVO? = null
@@ -35,8 +40,12 @@ class FilterViewModel @Inject constructor(
     fun getFiltersLiveData() =
         filtersLiveData as LiveData<List<FilterVO>>
 
+    fun getFiltersSavedLiveData() = filtersSavedLiveData as LiveData<Boolean>
+
     fun getProfessions() {
         var professions = getProfessionsUseCase().toVO(FilterType.PROFESSION)
+            .addDefaultValue(FilterType.PROFESSION)
+
         selectedProfession?.let { selectedProfessionNotNull ->
             professions = professions.map {
                 if (it.name == selectedProfessionNotNull.name) selectedProfessionNotNull else it
@@ -47,7 +56,9 @@ class FilterViewModel @Inject constructor(
     }
 
     fun getGenders() {
-        var genders = listOf("M", "F").toVO(FilterType.GENDER)
+        var genders =
+            listOf(MALE, FEMALE).toVO(FilterType.GENDER).addDefaultValue(FilterType.GENDER)
+
         selectedGender?.let { selectedGenderNotNull ->
             genders = genders.map {
                 if (it.name == selectedGenderNotNull.name) selectedGenderNotNull else it
@@ -60,17 +71,19 @@ class FilterViewModel @Inject constructor(
     fun saveSelection(filter: FilterVO) {
         when (filter.type) {
             FilterType.PROFESSION -> {
-                selectedProfession = filter
+                selectedProfession = if (filter.name == NOTHING) null else filter
             }
 
             FilterType.GENDER -> {
-                selectedGender = filter
+                selectedGender = if (filter.name == NOTHING) null else filter
             }
         }
+
     }
 
     fun saveFilters() {
-        saveFiltersUseCase(Pair(selectedProfession?.name, selectedGender?.name))
+        val saved = saveFiltersUseCase(Pair(selectedProfession?.name, selectedGender?.name))
+        filtersSavedLiveData.postValue(saved)
     }
 
     private fun List<String>.toVO(type: FilterType) = this.map {
@@ -82,4 +95,16 @@ class FilterViewModel @Inject constructor(
         type = type,
         selected = selected
     )
+
+    private fun List<FilterVO>.addDefaultValue(type: FilterType): List<FilterVO> {
+        val selected = if (type == FilterType.PROFESSION) {
+            selectedProfession == null
+
+        } else {
+            selectedGender == null
+        }
+        val newList: MutableList<FilterVO> = mutableListOf(NOTHING.toVO(type, selected))
+        newList.addAll(this)
+        return newList
+    }
 }

@@ -10,6 +10,7 @@ import es.wokis.oompaloompas.data.response.map
 import es.wokis.oompaloompas.domain.GetMaxPageUseCase
 import es.wokis.oompaloompas.domain.GetOompaLoompasUseCase
 import es.wokis.oompaloompas.domain.GetSavedFiltersUseCase
+import es.wokis.oompaloompas.domain.SaveFiltersUseCase
 import es.wokis.oompaloompas.ui.oompa.mapper.toVO
 import es.wokis.oompaloompas.ui.oompa.vo.OompaLoompaVO
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class OompaLoompasListViewModel @Inject constructor(
     private val getOompaLoompasUseCase: GetOompaLoompasUseCase,
     private val getSavedFiltersUseCase: GetSavedFiltersUseCase,
+    private val saveFiltersUseCase: SaveFiltersUseCase,
     private val getMaxPageUseCase: GetMaxPageUseCase
 ) : ViewModel() {
     // region private live data
@@ -30,6 +32,7 @@ class OompaLoompasListViewModel @Inject constructor(
     // endregion
     private var page: Int = 1
     private var maxPage: Int = 1
+    private var filters: Pair<String?, String?> = Pair(null, null)
 
     // region public live data
     fun getOompaLoompasLiveData() =
@@ -42,7 +45,7 @@ class OompaLoompasListViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             getOompaLoompasUseCase(page).collect { asyncResult ->
                 oompaLoompasLiveData.postValue(asyncResult.map {
-                    it.toVO()
+                    it.toVO().filtered()
                 })
             }
         }
@@ -71,6 +74,32 @@ class OompaLoompasListViewModel @Inject constructor(
     }
 
     fun applyFilters() {
-        TODO("Not yet implemented")
+        val filters = getSavedFiltersUseCase()
+        oompaLoompasLiveData.value?.data.orEmpty()
+        this.filters = filters
+        getOompaLoompas()
+    }
+
+    fun removeFilters() {
+        saveFiltersUseCase(Pair(null, null))
+        applyFilters()
+    }
+
+    fun areThereFiltersApplied() = filters.first != null ||
+            filters.second != null
+
+    private fun List<OompaLoompaVO>.filtered(): List<OompaLoompaVO> {
+        var listFiltered = this
+        filters.first?.let { professionFilter ->
+            listFiltered = listFiltered.filter {
+                it.profession == professionFilter
+            }
+        }
+        filters.second?.let { genderFilter ->
+            listFiltered = listFiltered.filter {
+                it.gender == genderFilter
+            }
+        }
+        return listFiltered
     }
 }

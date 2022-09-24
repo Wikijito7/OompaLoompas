@@ -33,8 +33,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Button.Primary">
-        <item name="android:backgroundTint">?attr/colorPrimary</item>
+    <style name="Button.Secondary">
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
     </style>
 
     <style name="Text" parent="Theme.OompaLoompas">
