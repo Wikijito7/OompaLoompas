@@ -92,6 +92,10 @@ class FilterDialogFragment : BaseBottomSheetDialogFragment() {
             filterBtnApplyFilter.setOnClickListener {
                 viewModel.saveFilters()
             }
+
+            filterBtnBack.setOnClickListener {
+                showOptionsButtons()
+            }
         }
     }
 
@@ -101,6 +105,7 @@ class FilterDialogFragment : BaseBottomSheetDialogFragment() {
             filterBtnGender.show()
             filterBtnApplyFilter.show()
             filterContainerMainContent.hide()
+            filterBtnBack.hide()
         }
     }
 
@@ -109,6 +114,7 @@ class FilterDialogFragment : BaseBottomSheetDialogFragment() {
             filterBtnProfession.hide()
             filterBtnGender.hide()
             filterBtnApplyFilter.hide()
+            filterBtnBack.show()
         }
     }
 }

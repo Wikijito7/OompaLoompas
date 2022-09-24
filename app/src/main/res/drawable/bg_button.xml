@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/dark_yellow">
-    <item>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
         <shape>
-            <solid android:color="?attr/colorPrimary" />
+            <solid android:color="@color/dark_gray" />
 
             <corners android:radius="4dp" />
         </shape>
     </item>
-</ripple>
+    <item>
+        <ripple android:color="@color/dark_purple">
+            <item>
+                <shape>
+                    <solid android:color="?attr/colorPrimary" />
+
+                    <corners android:radius="4dp" />
+                </shape>
+            </item>
+        </ripple>
+
+    </item>
+</selector>
 
 
