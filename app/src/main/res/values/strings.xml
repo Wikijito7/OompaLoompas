@@ -1,3 +1,45 @@
 <resources>
-    <string name="app_name">OompaLoompas</string>
+    <string name="app_name" translatable="false">Oompa Loompas</string>
+    <string name="main_menu__filter">Filter</string>
+    <string name="error_dialog__title">Error</string>
+    <string name="error_dialog__accept">Accept</string>
+    <string name="error_dialog__retry">Retry</string>
+    <string name="oompa_loompas__previous">Previous</string>
+    <string name="oompa_loompas__next">Next</string>
+    <string name="oompa_loompa__previous_desc">Previous page</string>
+    <string name="oompa_loompas__next_desc">Next page</string>
+    <string name="oompa_loompas__no_oompas_found">There are not Oompa Loompas available. We\'re sorry :(</string>
+    <string name="row_oompa__oompas_image_desc">Oompa\'s image</string>
+    <string name="row_oompa__full_name" translatable="false">%1$s %2$s</string>
+    <string name="row_oompa__age">%1$d years</string>
+    <string name="oompa_loompas__page_indicator" translatable="false">%1$d / %2$d</string>
+    <string name="oompa_loompas__loading_oompas">Obtaining Oompa Loompa Info…</string>
+    <string name="error__data_parse">There\'s been an error parsing the data we\'ve received.</string>
+    <string name="error__no_connection">We cannot communicate with the server. Check your internet connection.</string>
+    <string name="error__server">There\'s an error with the server. Try again.</string>
+    <string name="error__unknown">This is weird.. but we don\'t know what happened, but it seems there\'s some kind of error.</string>
+    <string name="row_oompa__male">Male</string>
+    <string name="row_oompa__female">Female</string>
+    <string name="oompa_detail__close_desc">Close dialog</string>
+    <string name="oompa_detail__description">Description</string>
+    <string name="oompa_detail__loading">Getting Oompa\'s info</string>
+    <string name="oompa_detail__extra_info">Extra info</string>
+    <string name="oompa_detail__height">%1$d centimeters</string>
+    <string name="oompa_detail__height_title">Height</string>
+    <string name="oompa_detail__country_title">Country</string>
+    <string name="oompa_detail__title">Oompa Loompa Detail</string>
+    <string name="oompa_detail__favorites">Favorites</string>
+    <string name="oompa_detail__food">Food</string>
+    <string name="oompa_detail__song_title">Song</string>
+    <string name="oompa_detail__quota">Quota</string>
+    <string name="oompa_detail__color_title">Color</string>
+    <string name="error__oompa_detail">There\'s been an error loading Oompa\'s info. Try again later.</string>
+    <string name="filter__profession_title">Profession</string>
+    <string name="filter__gender_title">Gender</string>
+    <string name="filter__main_title">Filter results</string>
+    <string name="filter__accept">Accept</string>
+    <string name="filter__apply_filters">Apply filters</string>
+    <string name="oompa_loompas__filters_applied">There are filters applied</string>
+    <string name="oompa_loompas__remove_filters">Remove filters</string>
+    <string name="row_filter__nothing_selected">Without filter</string>
 </resources>

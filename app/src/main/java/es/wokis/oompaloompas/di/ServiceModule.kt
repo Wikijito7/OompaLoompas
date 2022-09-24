@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import es.wokis.oompaloompas.data.constants.WSConstants
-import es.wokis.oompaloompas.remote.oompaloompa.service.OompaLoompaService
+import es.wokis.oompaloompas.data.remote.oompaloompa.service.OompaLoompaService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

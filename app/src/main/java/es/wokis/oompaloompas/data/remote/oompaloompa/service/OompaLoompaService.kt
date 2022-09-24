@@ -1,7 +1,7 @@
-package es.wokis.oompaloompas.remote.oompaloompa.service
+package es.wokis.oompaloompas.data.remote.oompaloompa.service
 
-import es.wokis.oompaloompas.remote.oompaloompa.dto.OompaLoompaDTO
-import es.wokis.oompaloompas.remote.oompaloompa.dto.OompaLoompaResponseDTO
+import es.wokis.oompaloompas.data.remote.oompaloompa.dto.OompaLoompaDTO
+import es.wokis.oompaloompas.data.remote.oompaloompa.dto.OompaLoompaResponseDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

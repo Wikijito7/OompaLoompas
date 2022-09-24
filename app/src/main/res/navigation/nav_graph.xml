@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/oompaLoompasListFragment">
 
     <fragment
         android:id="@+id/oompaLoompasListFragment"
-        android:name="es.wokis.oompaloompas.ui.oompa.OompaLoompasListFragment"
-        android:label="OompaLoompasListFragment">
+        android:name="es.wokis.oompaloompas.ui.oompa.fragment.OompaLoompasListFragment"
+        android:label="OompaLoompasListFragment"
+        tools:layout="@layout/fragment_oompa_loompas_list">
 
         <action
             android:id="@+id/action__list__navigate_to__detail"
-            app:destination="@id/oompaDetailDialogFragment"/>
+            app:destination="@id/oompaDetailDialogFragment" />
+
+        <action
+            android:id="@+id/action__list__navigate_to__filter"
+            app:destination="@id/filterDialogFragment" />
+
     </fragment>
 
     <dialog
         android:id="@+id/oompaDetailDialogFragment"
-        android:name="es.wokis.oompaloompas.ui.detail.OompaDetailDialogFragment"
+        android:name="es.wokis.oompaloompas.ui.detail.fragment.OompaDetailDialogFragment"
         android:label="OompaDetailDialogFragment">
 
         <argument
             android:name="oompaId"
-            app:argType="int" />
+            app:argType="long" />
+
     </dialog>
+
+    <dialog
+        android:id="@+id/filterDialogFragment"
+        android:name="es.wokis.oompaloompas.ui.filter.fragment.FilterDialogFragment"
+        android:label="FilterDialogFragment" />
 </navigation>
