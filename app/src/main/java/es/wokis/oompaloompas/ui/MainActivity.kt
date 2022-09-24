@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
     }
 
+    override fun onResume() {
+        super.onResume()
+        setSupportActionBar(binding?.mainToolbarAppToolbar)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
