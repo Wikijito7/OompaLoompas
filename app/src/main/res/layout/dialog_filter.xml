@@ -6,6 +6,17 @@
     android:layout_height="wrap_content"
     android:paddingBottom="16dp">
 
+    <ImageView
+        android:id="@+id/filter__btn__back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        android:contentDescription="@string/filter__back_desc"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/filter__label__main_title"
         style="@style/Text.Bold.Body1"
@@ -15,7 +26,7 @@
         android:text="@string/filter__main_title"
         app:layout_constraintBottom_toBottomOf="@id/filter__btn__close"
         app:layout_constraintEnd_toStartOf="@id/filter__btn__close"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/filter__btn__back"
         app:layout_constraintTop_toTopOf="@id/filter__btn__close" />
 
     <ImageView

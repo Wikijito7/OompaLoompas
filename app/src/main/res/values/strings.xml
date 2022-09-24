@@ -42,4 +42,5 @@
     <string name="oompa_loompas__filters_applied">There are filters applied</string>
     <string name="oompa_loompas__remove_filters">Remove filters</string>
     <string name="row_filter__nothing_selected">Without filter</string>
+    <string name="filter__back_desc">Go back</string>
 </resources>

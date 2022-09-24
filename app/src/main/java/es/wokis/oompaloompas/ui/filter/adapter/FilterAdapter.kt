@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import es.wokis.oompaloompas.R
+import es.wokis.oompaloompas.data.constants.AppConstants.FEMALE
 import es.wokis.oompaloompas.data.constants.AppConstants.MALE
 import es.wokis.oompaloompas.data.constants.AppConstants.NOTHING
 import es.wokis.oompaloompas.databinding.RowFilterBinding
-import es.wokis.oompaloompas.ui.filter.vo.FilterType
 import es.wokis.oompaloompas.ui.filter.vo.FilterVO
 
 class FilterAdapter : ListAdapter<FilterVO, FilterAdapter.ViewHolder>(FiltersDiffUtils()) {
@@ -70,17 +70,11 @@ class FilterAdapter : ListAdapter<FilterVO, FilterAdapter.ViewHolder>(FiltersDif
         }
 
         private fun RadioButton.setUpText(filter: FilterVO) {
-            text = when (filter.type) {
-                FilterType.PROFESSION -> when (filter.name) {
-                    NOTHING -> context.getString(R.string.row_filter__nothing_selected)
-                    else -> filter.name
-                }
-
-                FilterType.GENDER -> when (filter.name) {
-                    NOTHING -> context.getString(R.string.row_filter__nothing_selected)
-                    MALE -> context.getString(R.string.row_oompa__male)
-                    else -> context.getString(R.string.row_oompa__female)
-                }
+            text = when (filter.name) {
+                NOTHING -> context.getString(R.string.row_filter__nothing_selected)
+                MALE -> context.getString(R.string.row_oompa__male)
+                FEMALE -> context.getString(R.string.row_oompa__female)
+                else -> filter.name
             }
         }
 
