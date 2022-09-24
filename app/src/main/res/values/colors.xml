@@ -9,5 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#F0F0F0</color>
     <color name="dark_gray">#969696</color>
-    <color name="loading_background">#BF000000</color>
+    <color name="loading_background">#E6000000</color>
 </resources>
