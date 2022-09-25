@@ -6,6 +6,8 @@ A custom Android app made as a technical preview for Napptilus.
 * [Dependencies](https://github.com/Wikijito7/OompaLoompas#dependencies)
 * [How to run it](https://github.com/Wikijito7/OompaLoompas#how-to-run-it)
 * [How it works](https://github.com/Wikijito7/OompaLoompas#how-it-works)
+* [Known bugs](https://github.com/Wikijito7/OompaLoompas#known-bugs)
+* [License](https://github.com/Wikijito7/OompaLoompas#license)
 
 ## Pre-requisites
 * Android 5.0+.
