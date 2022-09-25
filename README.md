@@ -18,7 +18,7 @@ A custom Android app made as a technical preview for Napptilus.
 ## Dependencies
 This app uses some dependencies in order to work. Apart from the basic suite of Google dependencies,such as Material, fragments, etc., this app uses:
 
-* **Kotlin**: Kotlin is a modern language that is used as an alternative to Java. Kotlin is null safe and it has a lot of benefits over Java. It is recomended to use it instead of Java in order to create new Android apps. This app uses Kotlin as the main language.
+* **Kotlin**: Kotlin is a modern language that is used as an alternative to Java. Kotlin is null safe and it has a lot of benefits over Java. It is recommended to use it instead of Java in order to create new Android apps. This app uses Kotlin as the main language.
 * **LiveData** and **ViewModel**: as it name says, those dependencies are for  LiveData and ViewModel purpose. They're here to make a more robust architecture and to follow the [Clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) pattern.
 * **Navigation**: this dependency, as last case implied, does what it name says. In order to use the last navigation component on the Jetpack suite, we need this dependency. Also, we've got _safe-args_, so we can use the human-friendly _NavDirections_ interface and use NavGraphs' arguments safely.
 * **Retrofit2**: this dependency is used to make the HTTP requests to the API. It's a very popular dependency to handle this type of request and it's very easy to use. Also, in order to parse the JSON response, we use **Gson**.
@@ -40,7 +40,7 @@ Oompa Loompas is an HR like app made to make the Chocolate Factory HQ life easie
 ### Error handling
 This app has error handling built in, it works by detecting and handling the errors that can occur in the app. The errors are handled in the following way:
 
-* If the app detects that there is no internet connection, or some error has ocurred while receiving the data, it will show a dialog with the error message and an _Accept_ button, which closes the dialog, _Retry_ button, which tries to make the connection again. If the user clicks on the _Retry_ button, the app will try to connect again. If the connection is successful, the app will continue working as normal. If not, it will show the same dialog again. This error handling can be scaled up, as it is defined in a single class called _ErrorType_, and captured on the _ErrorManager_ wrapped, so it can be used in any screen just by listening to LiveData's observer with an _AsyncResult_ object.
+* If the app detects that there is no internet connection, or some error has occurred while receiving the data, it will show a dialog with the error message and an _Accept_ button, which closes the dialog, _Retry_ button, which tries to make the connection again. If the user clicks on the _Retry_ button, the app will try to connect again. If the connection is successful, the app will continue working as normal. If not, it will show the same dialog again. This error handling can be scaled up, as it is defined in a single class called _ErrorType_, and captured on the _ErrorManager_ wrapped, so it can be used in any screen just by listening to LiveData's observer with an _AsyncResult_ object.
 
 * When a filter is applied, if there are no results, it will show a message on the screen saying that there are no results and a _Remove filters_ button which clears filters when clicked.
 
@@ -55,4 +55,4 @@ This app has other features that we've haven't mentioned before, such as:
 * Have you found one? Create a ticket [here](https://github.com/Wikijito7/OompaLoompas/issues).
 
 ## License
-The API this App uses is owned by [Napptilus](https://napptilus.com/), so it can be used only for this technical previews purpose. The rest of the code is free to use, a mention to the author would be appreciated, but it isn't necesary.
+The API this App uses is owned by [Napptilus](https://napptilus.com/), so it can be used only for this technical previews purpose. The rest of the code is free to use, a mention to the author would be appreciated, but it isn't necessary.
